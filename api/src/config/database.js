@@ -13,7 +13,7 @@
 
  // ==> Conexão com a Base de Dados:
  const pool = new Pool({
-    connectionStrings: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL
  });
 
  pool.on('connect', () => {
