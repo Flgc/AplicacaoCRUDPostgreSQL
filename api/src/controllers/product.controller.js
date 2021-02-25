@@ -1,9 +1,12 @@
 /**
  * Arquivo: src/controllers/product.controller.js
- * Descrição: método responsável por criar um novo 'Product'.
+ * Descrição: arquivo responsável pelo CRUD da classe 'Product'
  * Data: 25/02/2021
  */
 
+
+ // ==> * método responsável por criar um novo 'Product'.
+ 
  const db = require("../config/database");
 
  exports.createProduct = async (req, res) => {
@@ -19,4 +22,12 @@
           product: { product_name, quantity, price }
        },
     });
+
+    // ==> Método desponsável por listar todos os 'Products':
+    
+    exports.listAllProducts = async (req, res) => {
+      const response = await db.query(
+         'SELECT * FROM products ORDER BY productname ASC');
+         res.status(200).send(response.rows);
+   };
  };
