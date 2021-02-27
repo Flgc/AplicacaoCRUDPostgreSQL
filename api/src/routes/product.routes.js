@@ -23,4 +23,8 @@
 
 router.get('/products/:id', productController.findProductById);
 
+// ==> Rota responsável por atualizar por 'Id' os 'Products': (PUT): localhost:3000/api/products/:id 
+
+router.put('/products/:id', productController.updateProductById);
+
  module.exports = router;

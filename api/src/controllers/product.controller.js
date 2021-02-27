@@ -43,4 +43,19 @@
     res.status(200).send(response.rows);
  };
 
- 
+ // ==> Método responsável por atualizar um 'Product' por 'Id': 
+
+ exports.updateProductById = async (req, res) => {
+    const productId = parseInt(req.params.id);
+    const { product_name, quantity, price } = req.body;
+
+    const response = await db.query(
+       "UPDATE products SET productname = $1, quantity = $2, price = $3 WHERE productId = $4",
+       [product_name, quantity, price, productId]
+    );
+
+    res.status(200).send({ message: "Product Updated Successfully!" });
+ };
+
+
+
