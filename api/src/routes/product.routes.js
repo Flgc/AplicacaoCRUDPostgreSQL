@@ -5,7 +5,7 @@
  * Data: 25/02/2021
  */
 
- const router = require('express-promise-router')();
+ const router = require('express-promise-router') ();
  const productController = require('../controllers/product.controller');
 
 
@@ -18,5 +18,9 @@
  // ==> Rota responsável por listar todos os 'Products': (GET): localhost:3000/api/products 
 
  router.get('/products', productController.listAllProducts);
+
+// ==> Rota responsável em buscar por 'Id' os 'Products': (GET): localhost:3000/api/products/:id 
+
+router.get('/products/:id', productController.findProductById);
 
  module.exports = router;

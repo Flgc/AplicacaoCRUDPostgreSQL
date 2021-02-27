@@ -22,12 +22,25 @@
           product: { product_name, quantity, price }
        },
     });
-
-    // ==> Método desponsável por listar todos os 'Products':
-    
-    exports.listAllProducts = async (req, res) => {
-      const response = await db.query(
-         'SELECT * FROM products ORDER BY productname ASC');
-         res.status(200).send(response.rows);
-   };
  };
+ 
+ // ==> Método responsável por listar todos os 'Products':
+
+ exports.listAllProducts = async (req, res) => {
+    const response = await db.query(
+       'SELECT * FROM products ORDER BY productname ASC');
+       
+       res.status(200).send(response.rows);
+ }; 
+
+ // ==> Método responsável em buscar o 'Product' por 'Id' 
+
+ exports.findProductById = async(req, res) => {
+    const productId = parseInt(req.params.id);
+    const response = await db.query('SELECT * FROM products WHERE productid = $1',
+    [productId]);
+
+    res.status(200).send(response.rows);
+ };
+
+ 
