@@ -27,4 +27,8 @@ router.get('/products/:id', productController.findProductById);
 
 router.put('/products/:id', productController.updateProductById);
 
+// ==> Rota responsável por deletar por 'Id' os 'Products': (DELETE): localhost:3000/api/products/:id 
+
+router.delete('/products/:id', productController.deleteProductById);
+
  module.exports = router;
